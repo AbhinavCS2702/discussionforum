@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
+import {Link,useNavigate} from 'react-router-dom';
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth';
 function Login() {
+  const navigate=useNavigate();
+  const [email,setEmail]=useState('');
+  const [password,setPassword]=useState('');
+  const signIn=(e)=>{
+    e.preventDefault();
+    const auth=getAuth();
+    signInWithEmailAndPassword(auth,email,password)
+      .then((auth)=>{
+        navigate('/');
+      })
+      .catch((error)=>alert(error.message));
+  }
+  const register=(e)=>{
+    e.preventDefault();
+    const auth=getAuth();
+    createUserWithEmailAndPassword(auth,email,password)
+      .then((auth)=>{
+        if(auth){
+          navigate('/');
+        }
+      })
+      .catch((error)=>alert(error.message));
+  };
   return (
     <div>
       <div class="container">
@@ -19,11 +44,11 @@ function Login() {
             <div>
               <div id="email_field" class="credentials">
                 <label>Email Address</label>
-                <input placeholder="enter email address" type="email" />
+                <input placeholder="enter email address" type="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
               </div>
               <div id="email_field" class="credentials">
                 <label>Password</label>
-                <input placeholder="enter password" type="password" />
+                <input placeholder="enter password" type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
               </div>
               <div>
                 <p>
@@ -34,17 +59,17 @@ function Login() {
           </div>
           <div class="buttons">
             <div id="Login">
-              <button>Login</button>
+              <button type="submit" onClick={signIn}>Login</button>
             </div>
             <div id="Sign Up">
-              <button>Sign Up</button>
+              <button onClick={register}>Sign Up</button>
             </div>
           </div>
         </div>
 
         <div id="not_gay" align="center"></div>
         <div class="right">
-          <div class="navigation">
+          {/* <div class="navigation">
             <h3 id="home_nav">
               <a href="www.google.com">Home</a>
             </h3>
@@ -54,7 +79,7 @@ function Login() {
             <h3 id="our_college">
               <a href="">Our College</a>
             </h3>
-          </div>
+          </div> */}
           <div class="image">
             <img src="https://vce.ac.in/img/vlogo.gif" />
           </div>
