@@ -1,0 +1,33 @@
+.tweetBox {
+    width:800px;
+	padding-bottom: 10px;
+	border-bottom: 8px solid var(--forum-background);
+	padding-right: 10px;
+}
+.tweetBox > form {
+	display: flex;
+	flex-direction: column;
+}
+.tweetBox__input {
+	padding: 20px;
+	display: flex;
+}
+.tweetBox__input > textarea {
+    height:200px;
+	flex: 1;
+	margin-left: 20px;
+	font-size: 20px;
+	outline:none;
+}
+.tweetBox__tweetButton {
+	background-color: var(--forum-color) !important;
+	border: none !important;
+	color: white !important;
+	font-weight: 900 !important;
+	text-transform: inherit !important;
+	border-radius: 30px !important;
+	width: 80px;
+	height: 40px !important;
+	margin-top: 20px !important;
+	margin-left: auto !important;
+}
