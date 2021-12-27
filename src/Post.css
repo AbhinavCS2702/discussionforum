@@ -1,0 +1,37 @@
+.tweet {
+	display: flex;
+    flex-direction:column;
+	border-bottom: 1px solid var(--forum-background);
+    justify-content:space-around;
+}
+.tweet__body {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.tweet__headerDescription {
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+
+.tweet__headerText > h3 {
+	font-size: 15px;
+	margin-bottom: 5px;
+}
+
+.tweet__deleteButton {
+	color: var(--forum-color);
+}
+.tweet__deleteButton:hover {
+	color: red;
+	cursor: pointer;
+}
+.reactions
+{
+    width:200px;
+    display:flex;
+    justify-content:space-around;
+}
